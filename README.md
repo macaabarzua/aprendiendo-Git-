@@ -1,2 +1,2 @@
-# aprendiendo-Git-
+# aprendiendo-Git
 clase 2

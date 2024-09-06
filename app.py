@@ -3,14 +3,22 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import plotly.express as px
 
-datos = pd.read_csv('./megaline_users.csv')
+import data_wrangling
 
-print(datos.head())
+def main():
+    datos = pd.read_csv('./megaline_users.csv')
+    
+    datos = data_wrangling.clean(datos)
 
-datos['churn_date'].fillna(0, inplace=True)
-#print(datos.info())
+    #print(datos.info())
 
-fig = px.histogram(datos, 'reg_date')
-fig.show()
+    boton_histograma = st.button('Click aquí para dibujar el histograma')
 
-st.plotly_chart(fig)
+    if boton_histograma:
+        fig = px.histogram(datos, 'reg_date')
+        fig.show()
+
+        st.plotly_chart(fig)
+
+if __name__ == '__main__':
+    main()
